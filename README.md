@@ -59,6 +59,7 @@ project-name/
 
 ## Contributors
 - **DerekXu** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
+- **Petar** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
@@ -94,3 +95,5 @@ Example:
 
 Example:
 This project is licensed under the MIT License. See the LICENSE file for details.
+
+
