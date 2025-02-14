@@ -1,1 +1,32 @@
 
+.bg-info {
+    background-color: #baa898 !important;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .navbar-nav .nav-link {
+    color: #280003;
+}
+
+.navbar-brand {
+    font-family: 'quicksand';
+    font-size: 2.25rem;
+}
+
+.btn-info {
+    color: #280003;
+    background-color: #eee0cb;
+    border-color: #280003;
+}
+
+.btn-primary {
+    color: #280003;
+    font-size: 150%;
+    background-color: #c2847a;
+    border-color: #280003;
+    border-width: 1px;
+}
+
+body {
+    background-color: #eee0cb;
+}
