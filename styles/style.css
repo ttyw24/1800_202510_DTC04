@@ -30,3 +30,8 @@
 body {
     background-color: #eee0cb;
 }
+
+.vl {
+    border-left: 6px solid #280003;
+    height: 500px;
+}
