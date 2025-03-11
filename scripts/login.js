@@ -6,6 +6,6 @@ document.getElementById("login-form").addEventListener("submit", function (event
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
-            window.location.href = "main.html"; // Redirect after successful login
+            window.location.href = "my_recipes.html"; // Redirect after successful login
         });
 });
