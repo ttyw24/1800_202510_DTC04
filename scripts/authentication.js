@@ -1,35 +1,34 @@
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
+// Listen for the submit event
+document.getElementById('login-form').addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent default form submission
 
-var uiConfig = {
-    callbacks: {
-        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
-            // User successfully signed in.
-            // Return type determines whether we continue the redirect automatically
-            // or whether we leave that to developer to handle.
-            return true;
-        },
-        uiShown: function () {
-            // The widget is rendered.
-            // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
-        }
-    },
-    // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-    signInFlow: 'popup',
-    signInSuccessUrl: 'main.html',
-    signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
-        // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-        // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-        // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-        // firebase.auth.GithubAuthProvider.PROVIDER_ID,
-        firebase.auth.EmailAuthProvider.PROVIDER_ID,
-        // firebase.auth.PhoneAuthProvider.PROVIDER_ID
-    ],
-    // Terms of service url.
-    tosUrl: '<your-tos-url>',
-    // Privacy policy url.
-    privacyPolicyUrl: '<your-privacy-policy-url>'
-};
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-ui.start('#firebaseui-auth-container', uiConfig);
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Account creation successful
+            console.log('Account created:', userCredential.user);
+
+            // Redirect to main.html
+            window.location.href = "main.html";
+        })
+        .catch((error) => {
+            if (error.code === 'auth/email-already-in-use') {
+                // If account already exists, try to log in
+                firebase.auth().signInWithEmailAndPassword(email, password)
+                    .then((userCredential) => {
+                        console.log('Logged in:', userCredential.user);
+                        window.location.href = "main.html";
+                    })
+                    .catch((loginError) => {
+                        console.error('Login failed:', loginError.code, loginError.message);
+                        alert('Login failed: ' + loginError.message);
+                    });
+            } else {
+                // Other errors (like weak password)
+                console.error('Account creation failed:', error.code, error.message);
+                alert('Account creation failed: ' + error.message);
+            }
+        });
+});
