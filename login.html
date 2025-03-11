@@ -29,6 +29,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="./scripts/authentication.js"></script>
+    <script src="./scripts/login.js"></script>
 
 </head>
 
@@ -66,19 +67,21 @@
     <!-- Stuff for body goes here -->
 
     <main>
-        <form>
+        <form id="login-form">
             <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
             </div>
-            <a href="main.html"><button type="submit" class="btn btn-primary">Submit</button></a>
+            <button type="submit" class="btn btn-primary">Login</button>
         </form>
+        
+
+
+        
     </main>
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
