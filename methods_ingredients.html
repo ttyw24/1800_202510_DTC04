@@ -34,7 +34,7 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="./scripts/firebaseAPI_TEAMDTC04.js"></script>
-    
+
 
 
 </head>
@@ -74,8 +74,8 @@
 
     <main>
         <div class="dropdown" style="margin: 10px;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
                 Cooking Method
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -96,15 +96,21 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="Broccoli" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Broccoli
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input class="form-check-input" type="checkbox" value="Carrot" id="flexCheckChecked">
                     <label class="form-check-label" for="flexCheckChecked">
                         Carrot
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Onion" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Onion
                     </label>
                 </div>
             </div>
@@ -119,15 +125,21 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="Chicken" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Chicken
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input class="form-check-input" type="checkbox" value="Beef" id="flexCheckChecked">
                     <label class="form-check-label" for="flexCheckChecked">
                         Beef
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Pork" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Pork
                     </label>
                 </div>
             </div>
@@ -142,13 +154,19 @@
         <div class="collapse" id="collapseExample">
             <div class="card card-body">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" value="Bread" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Bread
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Pasta" id="flexCheckDefault">
                     <label class="form-check-label" for="flexCheckDefault">
                         Pasta
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <input class="form-check-input" type="checkbox" value="Rice" id="flexCheckChecked">
                     <label class="form-check-label" for="flexCheckChecked">
                         Rice
                     </label>
@@ -156,8 +174,20 @@
             </div>
         </div>
 
+        <div>
+            <p id="ingredientList"></p>
+        </div>
+
         <a href="timer.html"><button type="button" class="btn btn-outline-primary">Confirm</button>
-</a>
+        </a>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                selectMethod();
+                selectIngredients();
+            })
+        </script>
+
 
     </main>
 
@@ -177,7 +207,7 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-
+    <script src="./scripts/methods_ingredients.js"></script>
 </body>
 
 </html>
