@@ -27,6 +27,32 @@
     <link rel="stylesheet" href="./styles/style.css">
     <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            
+        }
+        .recipe-row {
+            margin-bottom: 20px;
+            padding: 20px;
+            
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .recipe-img {
+            max-width: 150px;
+            border-radius: 10px;
+        }
+        .recipe-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .recipe-description {
+            font-size: 1rem;
+         
+        }
+    </style>
+
 </head>
 
 <body>
@@ -62,56 +88,59 @@
 
     <!-- Stuff for body goes here -->
 
-    <main>
-        <h1 class="visually-hidden">Heroes examples</h1>
+ <!-- Stuff for body goes here -->
 
-        <div class="px-4 py-5 my-5 text-center">
-            <img class="d-block mx-auto mb-4"
-                src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
-                alt="" width="200" height="200">
-            <h1 class="display-5 fw-bold">PerfectPlate</h1>
-            <div class="col-lg-6 mx-auto">
-                <p class="lead mb-4">PerfectPlate ensures that every ingredient is cooked to perfection, every time.</p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <a href="my_recipes.html"><button type="button" class="btn btn-outline-secondary btn-lg px-4">
-                        My Recipes
-                    </a>
-                    <a href=""><button type="button" class="btn btn-outline-secondary btn-lg px-4">New Recipe</button></a>
-                </div>
+ <main>
+    <h1 class="visually-hidden">Heroes examples</h1>
+
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4"
+            src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
+            alt="" width="200" height="200">
+        <h1 class="display-5 fw-bold">PerfectPlate</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">PerfectPlate ensures that every ingredient is cooked to perfection, every time.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="my_recipes.html"><button type="button" class="btn btn-outline-secondary btn-lg px-4">
+                    My Recipes
+                </a>
+                <a href="cooking_method.html"><button type="button" class="btn btn-outline-secondary btn-lg px-4">New Recipe</button></a>
             </div>
         </div>
+    </div>
 
-        <h1 style="text-align: center;">Your Saved Recipes</h1>
-        <div style="display: flex; justify-content: center;">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://picsum.photos/300/200?=random1" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Recipe 1</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ipsam!</p>
-                    <a href="#" class="btn btn-primary">Recipe 1</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://picsum.photos/300/200?=random2" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Recipe 2</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, sequi aperiam.
-                    </p>
-                    <a href="#" class="btn btn-primary">Recipe 2</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="https://picsum.photos/300/200?=random3" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Recipe 3</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolorem vero
-                        totam!</p>
-                    <a href="#" class="btn btn-primary">Recipe 3</a>
-                </div>
+    <h1 style="text-align: center;">Your Saved Recipes</h1>
+    <div style="display: flex; justify-content: center;">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://picsum.photos/300/200?=random1" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Recipe 1</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, ipsam!</p>
+                <a href="#" class="btn btn-primary">Recipe 1</a>
             </div>
         </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://picsum.photos/300/200?=random2" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Recipe 2</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, sequi aperiam.
+                </p>
+                <a href="#" class="btn btn-primary">Recipe 2</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://picsum.photos/300/200?=random3" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Recipe 3</h5>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla dolorem vero
+                    totam!</p>
+                <a href="#" class="btn btn-primary">Recipe 3</a>
+            </div>
+        </div>
+    </div>
 
-    </main>
+</main>
+
 
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
         <p class="col-md-4 mb-0 text-muted">&copy; 2025 BCIT COMP1800</p>
