@@ -34,7 +34,7 @@
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
     <script src="./scripts/firebaseAPI_TEAMDTC04.js"></script>
-    
+
 
 
 </head>
@@ -49,22 +49,35 @@
             <a class="navbar-brand" href="#">
                 <img src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
                     height="36">
-                PerfectPlate </a>
+                PerfectPlate
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Left-aligned "Link" button -->
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn-info" type="submit">Search</button>
-                </form> -->
+                <!-- Right-aligned buttons -->
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">RECIPES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-dark" href="#" style="line-height: normal;">LOG IN</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -76,15 +89,17 @@
         <div style="margin: 10px;">
             <h2>My Recipes</h2>
         </div>
-        
-        
-        
+
+
+
         <div class="accordion" id="recipeAccordion">
 
             <!-- Grilled Cheese Sandwich -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGrilledCheese" aria-expanded="true" aria-controls="collapseGrilledCheese">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseGrilledCheese" aria-expanded="true"
+                        aria-controls="collapseGrilledCheese">
                         Grilled Cheese Sandwich
                     </button>
                 </h2>
@@ -92,73 +107,84 @@
                     <div class="accordion-body">
                         <h5>Ingredients & Cooking Times (In Order)</h5>
                         <p><strong>Current Minute: <span id="currentMinute">0</span></strong></p>
-                        
+
                         <div class="form-check">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="0" id="butterCheck">
+                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="0"
+                                id="butterCheck">
                             <label class="form-check-label" for="butterCheck">
                                 <strong>1. Butter</strong><br>
                                 Preparation Time: <strong>Apply before cooking</strong><br>
-                                Add Time: <strong>Spread on one side of each bread slice before placing in the pan</strong>
+                                Add Time: <strong>Spread on one side of each bread slice before placing in the
+                                    pan</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 2: Bread -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3" id="breadCheck">
+                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3"
+                                id="breadCheck">
                             <label class="form-check-label" for="breadCheck">
                                 <strong>2. White Bread</strong><br>
                                 Cooking Time: <strong>3 minutes</strong> on medium heat for the first side<br>
                                 Add Time: <strong>Place buttered side down first in a preheated pan</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 3: Cheese -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2" id="cheeseCheck">
+                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2"
+                                id="cheeseCheck">
                             <label class="form-check-label" for="cheeseCheck">
                                 <strong>3. White Cheese</strong><br>
                                 Cooking Time: <strong>2 minutes</strong> (just to melt)<br>
-                                Add Time: <strong>After flipping the bread once, place cheese on the toasted side</strong>
+                                Add Time: <strong>After flipping the bread once, place cheese on the toasted
+                                    side</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 4: Final Toast -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3" id="finalFlipCheck">
+                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3"
+                                id="finalFlipCheck">
                             <label class="form-check-label" for="finalFlipCheck">
                                 <strong>4. Final Toast</strong><br>
                                 Cooking Time: <strong>2-3 minutes</strong> until golden brown and crispy<br>
-                                Add Time: <strong>Flip the sandwich again and press gently to help melt the cheese</strong>
+                                Add Time: <strong>Flip the sandwich again and press gently to help melt the
+                                    cheese</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 5: Resting -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2" id="restCheck">
+                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2"
+                                id="restCheck">
                             <label class="form-check-label" for="restCheck">
                                 <strong>5. Resting Time</strong><br>
                                 Time: <strong>1-2 minutes</strong> (to let the cheese settle)<br>
                                 Add Time: <strong>Remove from pan and let rest before cutting for best texture</strong>
                             </label>
                         </div>
-                        
-        
+
+
                     </div>
                 </div>
             </div>
-        
+
             <!-- Chicken Fried Rice -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChickenFriedRice" aria-expanded="false" aria-controls="collapseChickenFriedRice">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseChickenFriedRice" aria-expanded="false"
+                        aria-controls="collapseChickenFriedRice">
                         Chicken Fried Rice
                     </button>
                 </h2>
-                <div id="collapseChickenFriedRice" class="accordion-collapse collapse" data-bs-parent="#recipeAccordion">
+                <div id="collapseChickenFriedRice" class="accordion-collapse collapse"
+                    data-bs-parent="#recipeAccordion">
                     <div class="accordion-body">
                         <h5>Ingredients & Cooking Times (In Order)</h5>
                         <p><strong>Current Minute: <span id="currentMinute">0</span></strong></p>
-                        
+
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="chickenCheck">
                             <label class="form-check-label" for="chickenCheck">
@@ -167,7 +193,7 @@
                                 Add Time: <strong>First</strong> (in a hot pan with oil)
                             </label>
                         </div>
-                
+
                         <!-- Step 2: Vegetables -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="veggiesCheck">
@@ -177,7 +203,7 @@
                                 Add Time: <strong>After chicken is fully cooked</strong> (stir-fry together for flavor)
                             </label>
                         </div>
-                
+
                         <!-- Step 3: Garlic -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="garlicCheck">
@@ -187,7 +213,7 @@
                                 Add Time: <strong>After vegetables</strong> (to avoid burning)
                             </label>
                         </div>
-                
+
                         <!-- Step 4: Rice -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="riceCheck">
@@ -197,7 +223,7 @@
                                 Add Time: <strong>After garlic</strong> (break up any clumps and stir-fry with the rest)
                             </label>
                         </div>
-                
+
                         <!-- Step 5: Soy Sauce -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="soySauceCheck">
@@ -207,7 +233,7 @@
                                 Add Time: <strong>After rice</strong> (for even flavor distribution)
                             </label>
                         </div>
-                
+
                         <!-- Step 6: Eggs -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="eggCheck">
@@ -217,7 +243,7 @@
                                 Add Time: <strong>Push rice to one side, scramble eggs on the other, then mix</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 7: Green Onions -->
                         <div class="form-check mt-2">
                             <input class="form-check-input" type="checkbox" value="" id="greenOnionCheck">
@@ -228,139 +254,145 @@
                             </label>
                         </div>
 
-                        
+
                     </div>
                 </div>
             </div>
-        
+
             <!-- Banana-Apple Smoothie -->
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSmoothie" aria-expanded="false" aria-controls="collapseSmoothie">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSmoothie" aria-expanded="false" aria-controls="collapseSmoothie">
                         Banana-Apple Smoothie
                     </button>
                 </h2>
                 <div id="collapseSmoothie" class="accordion-collapse collapse" data-bs-parent="#recipeAccordion">
                     <div class="accordion-body">
                         <h5>Ingredients & Preparation Times (In Order)</h5>
-        
+
                         <p><strong>Current Minute: <span id="currentMinuteSmoothie">0</span></strong></p>
-                        
+
                         <div class="form-check">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value="" data-minutes="1" id="bananaCheck">
+                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
+                                data-minutes="1" id="bananaCheck">
                             <label class="form-check-label" for="bananaCheck">
                                 <strong>1. Banana</strong><br>
                                 Preparation Time: <strong>Peel and slice (1 minute)</strong><br>
                                 Add Time: <strong>Add first into the blender</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 2: Apple -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value="" data-minutes="2" id="appleCheck">
+                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
+                                data-minutes="2" id="appleCheck">
                             <label class="form-check-label" for="appleCheck">
                                 <strong>2. Apple</strong><br>
                                 Preparation Time: <strong>Core and slice (2 minutes)</strong><br>
                                 Add Time: <strong>Add after banana for better blending</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 3: Milk -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value="" data-minutes="1" id="milkCheck">
+                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
+                                data-minutes="1" id="milkCheck">
                             <label class="form-check-label" for="milkCheck">
                                 <strong>3. Milk</strong><br>
                                 Preparation Time: <strong>Measure and pour (1 minute)</strong><br>
                                 Add Time: <strong>Add last to ease the blending process</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 4: Blend -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value="" data-minutes="2" id="blendCheck">
+                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
+                                data-minutes="2" id="blendCheck">
                             <label class="form-check-label" for="blendCheck">
                                 <strong>4. Blend</strong><br>
                                 Blending Time: <strong>2 minutes</strong><br>
                                 Add Time: <strong>Blend all ingredients until smooth</strong>
                             </label>
                         </div>
-                
+
                         <!-- Step 5: Serve -->
                         <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value="" data-minutes="1" id="serveCheck">
+                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
+                                data-minutes="1" id="serveCheck">
                             <label class="form-check-label" for="serveCheck">
                                 <strong>5. Serve</strong><br>
                                 Time: <strong>1 minute</strong> (for pouring and presentation)<br>
                                 Add Time: <strong>Serve in a chilled glass for best taste</strong>
                             </label>
                         </div>
-        
+
                     </div>
                 </div>
             </div>
-        
+
         </div>
-        
-<script>
-    let currentMinute = 0;
-    const checkboxes = document.querySelectorAll('.step-check');
-    const currentMinuteDisplay = document.getElementById('currentMinute');
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                currentMinute += parseInt(this.dataset.minutes);
-            } else {
-                currentMinute -= parseInt(this.dataset.minutes);
+        <script>
+            let currentMinute = 0;
+            const checkboxes = document.querySelectorAll('.step-check');
+            const currentMinuteDisplay = document.getElementById('currentMinute');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        currentMinute += parseInt(this.dataset.minutes);
+                    } else {
+                        currentMinute -= parseInt(this.dataset.minutes);
+                    }
+                    currentMinuteDisplay.textContent = currentMinute;
+                });
+            });
+        </script>
+        <style>
+            .diagram {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
             }
-            currentMinuteDisplay.textContent = currentMinute;
-        });
-    });
-</script>
-<style>
-    .diagram {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-    }
 
-    .box {
-        padding: 10px 20px;
-        border: 2px solid black;
-        margin: 5px;
-        font-weight: bold;
-        text-align: center;
-    }
+            .box {
+                padding: 10px 20px;
+                border: 2px solid black;
+                margin: 5px;
+                font-weight: bold;
+                text-align: center;
+            }
 
-    .arrow {
-        width: 30px;
-        height: 30px;
-        position: relative;
-    }
+            .arrow {
+                width: 30px;
+                height: 30px;
+                position: relative;
+            }
 
 
-    .arrow.right::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -px;
-        width: 30px;
-        height: 2px;
-        background-color: black;
-        transform: translateY(-50%);
-    }
+            .arrow.right::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: -px;
+                width: 30px;
+                height: 2px;
+                background-color: black;
+                transform: translateY(-50%);
+            }
 
-    .arrow.right::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 20px;
-        border-top: 5px solid transparent;
-        border-bottom: 5px solid transparent;
-        border-left: 10px solid black;
-        transform: translateY(-50%);
-    }
-</style>
+            .arrow.right::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 20px;
+                border-top: 5px solid transparent;
+                border-bottom: 5px solid transparent;
+                border-left: 10px solid black;
+                transform: translateY(-50%);
+            }
+        </style>
 
     </main>
 

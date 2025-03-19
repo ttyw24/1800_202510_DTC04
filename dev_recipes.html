@@ -47,22 +47,35 @@
             <a class="navbar-brand" href="#">
                 <img src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
                     height="36">
-                PerfectPlate </a>
+                PerfectPlate
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- Left-aligned "Link" button -->
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
                 </ul>
-                <!-- <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn-info" type="submit">Search</button>
-                </form> -->
+                <!-- Right-aligned buttons -->
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">RECIPES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-dark" href="#" style="line-height: normal;">LOG IN</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -73,43 +86,47 @@
     <main>
         <!DOCTYPE html>
         <html lang="en">
-        
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Exotic Recipes</title>
-            
+
             <style>
                 body {
                     font-family: 'Quicksand', sans-serif;
-                    
+
                 }
+
                 .recipe-row {
                     margin-bottom: 20px;
                     padding: 20px;
-                    
+
                     border-radius: 10px;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 }
+
                 .recipe-img {
                     max-width: 150px;
                     border-radius: 10px;
                 }
+
                 .recipe-title {
                     font-size: 1.5rem;
                     font-weight: bold;
                 }
+
                 .recipe-description {
                     font-size: 1rem;
-                 
+
                 }
             </style>
         </head>
-        
+
         <body>
             <div class="container mt-5">
                 <h1 class="text-center mb-5">Exotic Recipes</h1>
-                
+
                 <!-- Recipe 1 -->
                 <div class="row recipe-row align-items-center">
                     <div class="col-md-3">
@@ -117,10 +134,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="recipe-title">Dragon Fruit Salad</div>
-                        <div class="recipe-description">A vibrant mix of dragon fruit, kiwi, and pineapple, topped with a honey-lime drizzle for a refreshing and exotic taste.</div>
+                        <div class="recipe-description">A vibrant mix of dragon fruit, kiwi, and pineapple, topped with
+                            a honey-lime drizzle for a refreshing and exotic taste.</div>
                     </div>
                 </div>
-        
+
                 <!-- Recipe 2 -->
                 <div class="row recipe-row align-items-center">
                     <div class="col-md-3">
@@ -128,10 +146,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="recipe-title">Spicy Mango Curry</div>
-                        <div class="recipe-description">Sweet mangoes simmered in a spicy coconut curry sauce for a dish that's both flavorful and aromatic.</div>
+                        <div class="recipe-description">Sweet mangoes simmered in a spicy coconut curry sauce for a dish
+                            that's both flavorful and aromatic.</div>
                     </div>
                 </div>
-        
+
                 <!-- Recipe 3 -->
                 <div class="row recipe-row align-items-center">
                     <div class="col-md-3">
@@ -139,10 +158,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="recipe-title">Thai Basil Fried Rice</div>
-                        <div class="recipe-description">A fragrant fried rice infused with fresh Thai basil, garlic, and chili for a deliciously spicy kick.</div>
+                        <div class="recipe-description">A fragrant fried rice infused with fresh Thai basil, garlic, and
+                            chili for a deliciously spicy kick.</div>
                     </div>
                 </div>
-        
+
                 <!-- Recipe 4 -->
                 <div class="row recipe-row align-items-center">
                     <div class="col-md-3">
@@ -150,12 +170,13 @@
                     </div>
                     <div class="col-md-9">
                         <div class="recipe-title">Tamarind Glazed Chicken</div>
-                        <div class="recipe-description">Tender chicken glazed with a sweet and tangy tamarind sauce, perfect for an exotic culinary experience.</div>
+                        <div class="recipe-description">Tender chicken glazed with a sweet and tangy tamarind sauce,
+                            perfect for an exotic culinary experience.</div>
                     </div>
                 </div>
             </div>
         </body>
-        
+
         </html>
     </main>
 
@@ -175,7 +196,7 @@
 
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
-    
+
 </body>
 
 </html>
