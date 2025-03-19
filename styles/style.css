@@ -35,3 +35,6 @@ body {
     border-left: 6px solid #280003;
     height: 500px;
 }
+.row {
+    background-color: #fcf1e1;
+}
