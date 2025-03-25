@@ -8,11 +8,13 @@ function displayCardsDynamically(collection) {
                 var name = doc.data().name;
                 var description = doc.data().description;
                 var docID = doc.id;
+                var recipeCode = doc.data().code;
 
                 let newCard = cardTemplate.content.cloneNode(true);
 
                 newCard.querySelector('.card-title').innerHTML = name;
                 newCard.querySelector('.card-text').innerHTML = description;
+                newCard.querySelector('.card-image').src = `./images/${recipeCode}.jpg`;
                 newCard.querySelector('a').href = "each_dev_recipe.html?docID=" + docID;
 
                 // Attach the new card to the container with id "devRecipes"
