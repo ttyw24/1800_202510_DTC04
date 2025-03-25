@@ -1,34 +1,56 @@
-// Listen for the submit event
-document.getElementById('login-form').addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent default form submission
+// authentication.js - Handles login/sign-up and Firestore user doc creation
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+window.onload = function () {
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+  
+      const name = document.getElementById("signupName").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+  
+      const db = firebase.firestore();
+  
+      // Try to sign in first
+      firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // Account creation successful
-            console.log('Account created:', userCredential.user);
-
-            // Redirect to main.html
-            window.location.href = "main.html";
+          console.log("🔐 Logged in as existing user:", userCredential.user.email);
+          window.location.href = "main.html";
         })
         .catch((error) => {
-            if (error.code === 'auth/email-already-in-use') {
-                // If account already exists, try to log in
-                firebase.auth().signInWithEmailAndPassword(email, password)
-                    .then((userCredential) => {
-                        console.log('Logged in:', userCredential.user);
-                        window.location.href = "main.html";
-                    })
-                    .catch((loginError) => {
-                        console.error('Login failed:', loginError.code, loginError.message);
-                        alert('Login failed: ' + loginError.message);
-                    });
-            } else {
-                // Other errors (like weak password)
-                console.error('Account creation failed:', error.code, error.message);
-                alert('Account creation failed: ' + error.message);
-            }
+          if (error.code === "auth/user-not-found") {
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+              .then(async (userCredential) => {
+                const user = userCredential.user;
+                console.log("✅ New user created:", user.email);
+  
+                await user.updateProfile({ displayName: name });
+                console.log("👤 Display name set to:", name);
+  
+                console.log("📤 Attempting to write user to Firestore...");
+
+                try {
+                await db.collection("Users").doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                console.log("✅ Firestore user document successfully created!");
+                window.location.href = "main.html";
+                } catch (err) {
+                console.error("🔥 Firestore write FAILED:", err);
+                }
+
+                
+              })
+              .catch((err) => {
+                console.error("❌ Error creating user:", err.message);
+                alert("Error: " + err.message);
+              });
+          } else {
+            console.error("❌ Login failed:", error.message);
+            alert("Error: " + error.message);
+          }
         });
-});
+    });
+  };
+  

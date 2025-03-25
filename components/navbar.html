@@ -1,0 +1,45 @@
+<!-- components/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="main.html">
+        <img
+          src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
+          height="36">
+        PerfectPlate
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Left-aligned link -->
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+        </ul>
+  
+        <!-- Right-aligned nav items -->
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link" href="main.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ABOUT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="my_recipes.html">RECIPES</a>
+          </li>
+          <li class="nav-item" id="loginNav">
+            <a class="btn btn-sm btn-outline-dark" href="login.html" style="line-height: normal;">LOG IN</a>
+          </li>
+          <li class="nav-item" id="logoutNav" style="display: none;">
+            <button class="btn btn-sm btn-outline-danger" onclick="logout()">LOG OUT</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

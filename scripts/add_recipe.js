@@ -1,0 +1,150 @@
+let ingredientsData = {};
+let selectedIngredients = [];
+
+async function loadIngredients() {
+  const snapshot = await db.collection("Ingredients").get();
+  ingredientsData = {};
+  snapshot.forEach(doc => {
+    const data = doc.data();
+    const name = data.name;
+    const methods = data.methods;
+
+    if (!ingredientsData[name]) {
+      ingredientsData[name] = {};
+    }
+
+    for (let method in methods) {
+      ingredientsData[name][method] = methods[method];
+    }
+  });
+
+  populateIngredientDropdown();
+}
+
+function populateIngredientDropdown() {
+  ingredientDropdown.innerHTML = "";
+  Object.keys(ingredientsData).forEach(name => {
+    const option = document.createElement("option");
+    option.value = name;
+    option.textContent = name;
+    ingredientDropdown.appendChild(option);
+  });
+
+  updateMethodDropdown();
+}
+
+function updateMethodDropdown() {
+  methodDropdown.innerHTML = "";
+
+  const selectedIngredient = ingredientDropdown.value;
+  const methods = ingredientsData[selectedIngredient];
+
+  if (!methods) {
+    const opt = document.createElement("option");
+    opt.textContent = "No methods available";
+    opt.disabled = true;
+    methodDropdown.appendChild(opt);
+    return;
+  }
+
+  Object.keys(methods).forEach(method => {
+    const option = document.createElement("option");
+    option.value = method;
+    option.textContent = method;
+    methodDropdown.appendChild(option);
+  });
+}
+
+function updatePreview() {
+  previewList.innerHTML = "";
+
+  const sorted = Object.values(selectedIngredients).sort((a, b) => b.cookTime - a.cookTime);
+  const maxTime = sorted.length > 0 ? sorted[0].cookTime : 0;
+
+  sorted.forEach((item, index) => {
+    const li = document.createElement("li");
+    const startAt = maxTime - item.cookTime;
+    li.textContent = `${index + 1}. ${item.name} (${item.method}, ${item.cookTime} min) - Start at ${startAt}:00`;
+    previewList.appendChild(li);
+  });
+}
+
+ingredientDropdown.addEventListener("change", updateMethodDropdown);
+
+document.getElementById("addIngredientBtn").addEventListener("click", () => {
+  const name = ingredientDropdown.value;
+  const method = methodDropdown.value;
+
+  if (!ingredientsData[name] || !ingredientsData[name][method]) {
+    alert("Invalid ingredient or method.");
+    return;
+  }
+
+  const cookTime = ingredientsData[name][method];
+  selectedIngredients[`${name}-${method}`] = { name, method, cookTime };
+
+  updatePreview();
+});
+
+document.getElementById("recipeForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+  
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      alert("Please log in first.");
+      return;
+    }
+  
+    const recipeName = document.getElementById("recipeName").value.trim();
+    if (!recipeName || Object.keys(selectedIngredients).length === 0) {
+      alert("Please provide a recipe name and ingredients.");
+      return;
+    }
+  
+    const sorted = Object.values(selectedIngredients).sort((a, b) => b.cookTime - a.cookTime);
+    const maxTime = sorted[0].cookTime;
+  
+    const schedule = sorted.map(item => ({
+      name: item.name,
+      method: item.method,
+      cookTime: item.cookTime,
+      time: `${maxTime - item.cookTime}:00`
+    }));
+  
+    const recipe = {
+      name: recipeName,
+      ingredients: schedule,
+      totalTime: `${maxTime}:00`,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    };
+  
+    const recipesRef = db.collection("Users").doc(user.uid).collection("MyRecipes");
+    const existing = await recipesRef.where("name", "==", recipeName).get();
+  
+    if (!existing.empty) {
+      const confirmOverwrite = confirm(`A recipe named '${recipeName}' already exists. Overwrite it?`);
+      if (!confirmOverwrite) return;
+  
+      const batch = db.batch();
+      existing.forEach(doc => batch.delete(doc.ref));
+      await batch.commit();
+    }
+  
+    await recipesRef.add(recipe);
+  
+    alert("✅ Recipe saved successfully!");
+    selectedIngredients = {};
+    document.getElementById("recipeForm").reset();
+    previewList.innerHTML = "";
+    updateMethodDropdown();
+  
+    // Redirect to my_recipes.html
+    window.location.href = "my_recipes.html";
+  });
+  
+
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    loadIngredients();
+  }
+});

@@ -1,418 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <title>PerfectPlate</title>
-    <meta name="comp1800 template" content="My 1800 App">
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap Library CSS CDN go here -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>My Recipes</title>
+  
+    <!-- ✅ Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-    <!-- Boostrap Library JS CDN  go here -->
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="scripts/firebaseAPI_TEAMDTC04.js"></script>
+    <script src="scripts/navbar.js"></script>
+  
+    <!-- ✅ Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  
+    <!-- Your styles (optional) -->
+    <link rel="stylesheet" href="styles/style.css" />
 
-    <!-- Other libraries go here -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
-
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css">
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <script src="./scripts/firebaseAPI_TEAMDTC04.js"></script>
+  <style>
 
 
-
+    select, button {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 1rem;
+    }
+    .step {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-left: 5px solid #4caf50;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .step h3 {
+      margin: 0;
+    }
+    .step p {
+      margin: 5px 0;
+    }
+    .highlight {
+      font-weight: bold;
+    }
+  </style>
 </head>
-
 <body>
+  <div id="navbar-placeholder"></div>
+  <button onclick="history.back()" style="margin-bottom: 20px;">← Back</button>
 
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <nav class="navbar navbar-expand-lg navbar-light bg-info">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="https://media.istockphoto.com/id/638708254/vector/cooking-process-vector-illustration-flipping-asian-food-in-a-pan.jpg?s=612x612&w=0&k=20&c=5CYIPce69zbyPaXpytKks_xLYIBdr3XN_RzDAQcn2Yw="
-                    height="36">
-                PerfectPlate
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left-aligned "Link" button -->
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                </ul>
-                <!-- Right-aligned buttons -->
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">ABOUT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">RECIPES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-sm btn-outline-dark" href="#" style="line-height: normal;">LOG IN</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <h1>My Recipes</h1>
 
+  <label for="recipeSelect">Select a Recipe:</label>
+  <select id="recipeSelect">
+    <option value="">-- Select --</option>
+  </select>
+  <button id="deleteRecipeBtn" style="display:none;">🗑️ Delete Recipe</button>
 
-    <!-- Stuff for body goes here -->
+  <div id="recipeDetails"></div>
 
-    <main>
-        <div style="margin: 10px;">
-            <h2>My Recipes</h2>
-        </div>
+  <script>
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        fetchAndDisplayRecipes();
+      } else {
+        window.location.href = "login.html";
+      }
+    });
 
+    let currentRecipeId = null;
 
+    async function fetchAndDisplayRecipes() {
+      const user = firebase.auth().currentUser;
+      if (!user) {
+        alert("You must be logged in.");
+        return;
+      }
 
-        <div class="accordion" id="recipeAccordion">
+      const select = document.getElementById("recipeSelect");
+      const seenNames = new Set();
 
-            <!-- Grilled Cheese Sandwich -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseGrilledCheese" aria-expanded="true"
-                        aria-controls="collapseGrilledCheese">
-                        Grilled Cheese Sandwich
-                    </button>
-                </h2>
-                <div id="collapseGrilledCheese" class="accordion-collapse collapse" data-bs-parent="#recipeAccordion">
-                    <div class="accordion-body">
-                        <h5>Ingredients & Cooking Times (In Order)</h5>
-                        <p><strong>Current Minute: <span id="currentMinute">0</span></strong></p>
+      const recipesRef = db.collection("Users").doc(user.uid).collection("MyRecipes");
+      const recipesSnapshot = await recipesRef.orderBy("createdAt", "desc").get();
 
-                        <div class="form-check">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="0"
-                                id="butterCheck">
-                            <label class="form-check-label" for="butterCheck">
-                                <strong>1. Butter</strong><br>
-                                Preparation Time: <strong>Apply before cooking</strong><br>
-                                Add Time: <strong>Spread on one side of each bread slice before placing in the
-                                    pan</strong>
-                            </label>
-                        </div>
+      select.innerHTML = `<option value="">-- Select --</option>`;
 
-                        <!-- Step 2: Bread -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3"
-                                id="breadCheck">
-                            <label class="form-check-label" for="breadCheck">
-                                <strong>2. White Bread</strong><br>
-                                Cooking Time: <strong>3 minutes</strong> on medium heat for the first side<br>
-                                Add Time: <strong>Place buttered side down first in a preheated pan</strong>
-                            </label>
-                        </div>
+      recipesSnapshot.forEach(async (doc) => {
+        const data = doc.data();
 
-                        <!-- Step 3: Cheese -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2"
-                                id="cheeseCheck">
-                            <label class="form-check-label" for="cheeseCheck">
-                                <strong>3. White Cheese</strong><br>
-                                Cooking Time: <strong>2 minutes</strong> (just to melt)<br>
-                                Add Time: <strong>After flipping the bread once, place cheese on the toasted
-                                    side</strong>
-                            </label>
-                        </div>
+        if (!data.name || !data.ingredients || data.ingredients.length === 0) {
+          await recipesRef.doc(doc.id).delete();
+          console.log(`Deleted empty or unnamed recipe: ${doc.id}`);
+          return;
+        }
 
-                        <!-- Step 4: Final Toast -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="3"
-                                id="finalFlipCheck">
-                            <label class="form-check-label" for="finalFlipCheck">
-                                <strong>4. Final Toast</strong><br>
-                                Cooking Time: <strong>2-3 minutes</strong> until golden brown and crispy<br>
-                                Add Time: <strong>Flip the sandwich again and press gently to help melt the
-                                    cheese</strong>
-                            </label>
-                        </div>
+        const recipeName = data.name;
 
-                        <!-- Step 5: Resting -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check" type="checkbox" value="" data-minutes="2"
-                                id="restCheck">
-                            <label class="form-check-label" for="restCheck">
-                                <strong>5. Resting Time</strong><br>
-                                Time: <strong>1-2 minutes</strong> (to let the cheese settle)<br>
-                                Add Time: <strong>Remove from pan and let rest before cutting for best texture</strong>
-                            </label>
-                        </div>
+        if (!seenNames.has(recipeName)) {
+          seenNames.add(recipeName);
 
+          const option = document.createElement("option");
+          option.value = doc.id;
+          option.textContent = recipeName;
+          select.appendChild(option);
+        }
+      });
 
-                    </div>
-                </div>
-            </div>
+      select.addEventListener("change", async function () {
+        const recipeId = this.value;
+        currentRecipeId = recipeId;
+        const deleteBtn = document.getElementById("deleteRecipeBtn");
 
-            <!-- Chicken Fried Rice -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseChickenFriedRice" aria-expanded="false"
-                        aria-controls="collapseChickenFriedRice">
-                        Chicken Fried Rice
-                    </button>
-                </h2>
-                <div id="collapseChickenFriedRice" class="accordion-collapse collapse"
-                    data-bs-parent="#recipeAccordion">
-                    <div class="accordion-body">
-                        <h5>Ingredients & Cooking Times (In Order)</h5>
-                        <p><strong>Current Minute: <span id="currentMinute">0</span></strong></p>
+        if (recipeId) {
+          const recipeDoc = await recipesRef.doc(recipeId).get();
+          const recipeData = recipeDoc.data();
+          displayRecipe(recipeData.name, recipeData.ingredients);
+          deleteBtn.style.display = "inline-block";
+        } else {
+          document.getElementById("recipeDetails").innerHTML = "";
+          deleteBtn.style.display = "none";
+        }
+      });
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="chickenCheck">
-                            <label class="form-check-label" for="chickenCheck">
-                                <strong>1. Chicken (Diced)</strong><br>
-                                Cooking Time: <strong>5-7 minutes</strong> (until fully cooked and lightly browned)<br>
-                                Add Time: <strong>First</strong> (in a hot pan with oil)
-                            </label>
-                        </div>
+      document.getElementById("deleteRecipeBtn").addEventListener("click", async () => {
+        if (currentRecipeId && confirm("Are you sure you want to delete this recipe?")) {
+          await recipesRef.doc(currentRecipeId).delete();
+          location.reload();
+        }
+      });
+    }
 
-                        <!-- Step 2: Vegetables -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="veggiesCheck">
-                            <label class="form-check-label" for="veggiesCheck">
-                                <strong>2. Mixed Vegetables (Carrots, Peas, Corn)</strong><br>
-                                Cooking Time: <strong>2-3 minutes</strong> (until slightly tender but still crisp)<br>
-                                Add Time: <strong>After chicken is fully cooked</strong> (stir-fry together for flavor)
-                            </label>
-                        </div>
+    function displayRecipe(recipeName, ingredients) {
+      const container = document.getElementById("recipeDetails");
+      container.innerHTML = `<h2>${recipeName}</h2><h3>Ingredients & Cooking Times (In Order)</h3>`;
 
-                        <!-- Step 3: Garlic -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="garlicCheck">
-                            <label class="form-check-label" for="garlicCheck">
-                                <strong>3. Minced Garlic</strong><br>
-                                Cooking Time: <strong>30 seconds</strong> (just until fragrant)<br>
-                                Add Time: <strong>After vegetables</strong> (to avoid burning)
-                            </label>
-                        </div>
-
-                        <!-- Step 4: Rice -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="riceCheck">
-                            <label class="form-check-label" for="riceCheck">
-                                <strong>4. Cooked Rice (Preferably day-old)</strong><br>
-                                Cooking Time: <strong>2-3 minutes</strong> (until heated and well-mixed)<br>
-                                Add Time: <strong>After garlic</strong> (break up any clumps and stir-fry with the rest)
-                            </label>
-                        </div>
-
-                        <!-- Step 5: Soy Sauce -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="soySauceCheck">
-                            <label class="form-check-label" for="soySauceCheck">
-                                <strong>5. Soy Sauce</strong><br>
-                                Cooking Time: <strong>30 seconds</strong> (just to coat all ingredients)<br>
-                                Add Time: <strong>After rice</strong> (for even flavor distribution)
-                            </label>
-                        </div>
-
-                        <!-- Step 6: Eggs -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="eggCheck">
-                            <label class="form-check-label" for="eggCheck">
-                                <strong>6. Beaten Eggs</strong><br>
-                                Cooking Time: <strong>1-2 minutes</strong> (scramble and mix through the rice)<br>
-                                Add Time: <strong>Push rice to one side, scramble eggs on the other, then mix</strong>
-                            </label>
-                        </div>
-
-                        <!-- Step 7: Green Onions -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input" type="checkbox" value="" id="greenOnionCheck">
-                            <label class="form-check-label" for="greenOnionCheck">
-                                <strong>7. Chopped Green Onions</strong><br>
-                                Cooking Time: <strong>30 seconds</strong> (just to soften slightly)<br>
-                                Add Time: <strong>Last</strong> (for freshness and flavor)
-                            </label>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-
-            <!-- Banana-Apple Smoothie -->
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseSmoothie" aria-expanded="false" aria-controls="collapseSmoothie">
-                        Banana-Apple Smoothie
-                    </button>
-                </h2>
-                <div id="collapseSmoothie" class="accordion-collapse collapse" data-bs-parent="#recipeAccordion">
-                    <div class="accordion-body">
-                        <h5>Ingredients & Preparation Times (In Order)</h5>
-
-                        <p><strong>Current Minute: <span id="currentMinuteSmoothie">0</span></strong></p>
-
-                        <div class="form-check">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
-                                data-minutes="1" id="bananaCheck">
-                            <label class="form-check-label" for="bananaCheck">
-                                <strong>1. Banana</strong><br>
-                                Preparation Time: <strong>Peel and slice (1 minute)</strong><br>
-                                Add Time: <strong>Add first into the blender</strong>
-                            </label>
-                        </div>
-
-                        <!-- Step 2: Apple -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
-                                data-minutes="2" id="appleCheck">
-                            <label class="form-check-label" for="appleCheck">
-                                <strong>2. Apple</strong><br>
-                                Preparation Time: <strong>Core and slice (2 minutes)</strong><br>
-                                Add Time: <strong>Add after banana for better blending</strong>
-                            </label>
-                        </div>
-
-                        <!-- Step 3: Milk -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
-                                data-minutes="1" id="milkCheck">
-                            <label class="form-check-label" for="milkCheck">
-                                <strong>3. Milk</strong><br>
-                                Preparation Time: <strong>Measure and pour (1 minute)</strong><br>
-                                Add Time: <strong>Add last to ease the blending process</strong>
-                            </label>
-                        </div>
-
-                        <!-- Step 4: Blend -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
-                                data-minutes="2" id="blendCheck">
-                            <label class="form-check-label" for="blendCheck">
-                                <strong>4. Blend</strong><br>
-                                Blending Time: <strong>2 minutes</strong><br>
-                                Add Time: <strong>Blend all ingredients until smooth</strong>
-                            </label>
-                        </div>
-
-                        <!-- Step 5: Serve -->
-                        <div class="form-check mt-2">
-                            <input class="form-check-input step-check-smoothie" type="checkbox" value=""
-                                data-minutes="1" id="serveCheck">
-                            <label class="form-check-label" for="serveCheck">
-                                <strong>5. Serve</strong><br>
-                                Time: <strong>1 minute</strong> (for pouring and presentation)<br>
-                                Add Time: <strong>Serve in a chilled glass for best taste</strong>
-                            </label>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <script>
-            let currentMinute = 0;
-            const checkboxes = document.querySelectorAll('.step-check');
-            const currentMinuteDisplay = document.getElementById('currentMinute');
-
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function () {
-                    if (this.checked) {
-                        currentMinute += parseInt(this.dataset.minutes);
-                    } else {
-                        currentMinute -= parseInt(this.dataset.minutes);
-                    }
-                    currentMinuteDisplay.textContent = currentMinute;
-                });
-            });
-        </script>
-        <style>
-            .diagram {
-                display: flex;
-                align-items: center;
-                margin-top: 20px;
-            }
-
-            .box {
-                padding: 10px 20px;
-                border: 2px solid black;
-                margin: 5px;
-                font-weight: bold;
-                text-align: center;
-            }
-
-            .arrow {
-                width: 30px;
-                height: 30px;
-                position: relative;
-            }
-
-
-            .arrow.right::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: -px;
-                width: 30px;
-                height: 2px;
-                background-color: black;
-                transform: translateY(-50%);
-            }
-
-            .arrow.right::before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 20px;
-                border-top: 5px solid transparent;
-                border-bottom: 5px solid transparent;
-                border-left: 10px solid black;
-                transform: translateY(-50%);
-            }
-        </style>
-
-    </main>
-
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-muted">&copy; 2025 BCIT COMP1800</p>
-        <a href="/"
-            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32">
-                <use xlink:href="#bootstrap" />
-            </svg>
-        </a>
-    </footer>
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script src="./scripts/script.js"></script> -->
-    <script src="./scripts/login.js"></script>
+      ingredients.forEach((ing, index) => {
+        const step = document.createElement("div");
+        step.className = "step";
+        step.innerHTML = `
+          <h3>${index + 1}. ${ing.name}</h3>
+          <p><span class="highlight">Start Time:</span> ${ing.time}</p>
+          <p><span class="highlight">Cook Time:</span> ${ing.cookTime} minutes</p>
+          <p><span class="highlight">Method:</span> ${ing.method}</p>
+        `;
+        container.appendChild(step);
+      });
+    }
+  </script>
 </body>
-
 </html>
