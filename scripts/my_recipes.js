@@ -70,11 +70,8 @@ async function fetchAndDisplayRecipes() {
         }
     });
 
-    document.getElementById("deleteRecipeBtn").addEventListener("click", async () => {
-        if (currentRecipeId && confirm("Are you sure you want to delete this recipe?")) {
-            await recipesRef.doc(currentRecipeId).delete();
-            location.reload();
-        }
+    document.getElementById("editRecipeBtn").addEventListener("click", async () => {
+        location.href = "add_recipe.html?docID=" + currentRecipeId;
     });
 }
 
