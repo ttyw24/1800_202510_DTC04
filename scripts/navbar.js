@@ -19,13 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
         firebase.auth().onAuthStateChanged((user) => {
           const loginNav = document.getElementById("loginNav");
           const logoutNav = document.getElementById("logoutNav");
+          const homeLink = document.getElementById("homeLink");
   
           if (user) {
             if (loginNav) loginNav.style.display = "none";
             if (logoutNav) logoutNav.style.display = "block";
+            if (homeLink) homeLink.href = "main.html";
           } else {
             if (loginNav) loginNav.style.display = "block";
             if (logoutNav) logoutNav.style.display = "none";
+            if (homeLink) homeLink.href = "index.html";
           }
         });
       })
