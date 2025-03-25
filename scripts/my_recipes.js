@@ -48,15 +48,25 @@ async function fetchAndDisplayRecipes() {
         const recipeId = this.value;
         currentRecipeId = recipeId;
         const deleteBtn = document.getElementById("deleteRecipeBtn");
+        const editBtn = document.getElementById("editRecipeBtn")
 
         if (recipeId) {
             const recipeDoc = await recipesRef.doc(recipeId).get();
             const recipeData = recipeDoc.data();
             displayRecipe(recipeData.name, recipeData.ingredients);
             deleteBtn.style.display = "inline-block";
+            editBtn.style.display = "inline-block";
         } else {
             document.getElementById("recipeDetails").innerHTML = "";
             deleteBtn.style.display = "none";
+            editBtn.style.display = "none";
+        }
+    });
+
+    document.getElementById("deleteRecipeBtn").addEventListener("click", async () => {
+        if (currentRecipeId && confirm("Are you sure you want to delete this recipe?")) {
+            await recipesRef.doc(currentRecipeId).delete();
+            location.reload();
         }
     });
 
