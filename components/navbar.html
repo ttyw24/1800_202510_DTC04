@@ -18,7 +18,7 @@
       </button>
       
       <!-- hamburger components -->
-      <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto align-items-center">
           <li class="nav-item">
             <a id="homeLink" class="nav-link" href="main.html">HOME</a>
@@ -29,7 +29,10 @@
           <li class="nav-item">
             <a class="nav-link" href="my_recipes.html">RECIPES</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="loginNav">
+            <a class="btn btn-sm btn-outline-dark" href="login.html" style="line-height: normal;">LOG IN</a>
+          </li>
+          <li class="nav-item" id="logoutNav" style="display: none;">
             <button class="btn btn-sm btn-outline-danger" onclick="logout()">LOG OUT</button>
           </li>
         </ul>
