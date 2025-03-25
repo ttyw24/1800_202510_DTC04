@@ -65,8 +65,26 @@ function updatePreview() {
     const li = document.createElement("li");
     const startAt = maxTime - item.cookTime;
     li.textContent = `${index + 1}. ${item.name} (${item.method}, ${item.cookTime} min) - Start at ${startAt}:00`;
+    
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("btn", "btn-danger", "btn-sm");
+    deleteBtn.addEventListener("click", () => deleteIngredient(item.name, item.method)); // Handle deletion
+
+    
+    li.appendChild(deleteBtn);
+
+    
     previewList.appendChild(li);
   });
+}
+
+
+function deleteIngredient(name, method) {
+  const key = `${name}-${method}`;
+  delete selectedIngredients[key];
+  updatePreview();
 }
 
 ingredientDropdown.addEventListener("change", updateMethodDropdown);
