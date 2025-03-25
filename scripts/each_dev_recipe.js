@@ -1,68 +1,26 @@
-function displayCardsDynamically(collection) {
-    let cardTemplate = document.getElementById("recipeCardTemplate"); // Template for the card
+const devRecipeButton = document.getElementById('devRecipe1');
+devRecipeButton.addEventListener('click', function () {
+    // Define the docID you want to use (this can be dynamic or fixed based on your data)
+    const docID = "2q4g5N71LwEpnnmM1fFv";  // You can replace this with a dynamic value or fetch it from a data attribute
 
-    db.collection(collection)
-        .get()
-        .then(allRecipes => {
-            allRecipes.forEach(doc => {
-                var name = doc.data().name;
-                var description = doc.data().description; 
-                var docID = doc.id;
-
-                let newCard = cardTemplate.content.cloneNode(true);
-
-                newCard.querySelector('.card-title').innerHTML = name;
-                newCard.querySelector('.card-text').innerHTML = description;
-                newCard.querySelector('a').href = "each_dev_recipe.html?docID=" + docID;
-
-                // Attach the new card to the container with id "devRecipes"
-                document.getElementById("devRecipes").appendChild(newCard);
-            })
-        })
-        .catch(error => {
-            console.error("Error fetching data: ", error);
-        });
-}
-
-displayCardsDynamically("DevRecipes");
+    // Redirect to the next page using the docID
+    window.location.href = "each_dev_recipe.html?docID=" + docID;
+});
 
 
-// Function to fetch data from Firestore and populate cards
-async function fetchAndPopulateCards() {
-    const recipesRef = db.collection("Recipes"); // Reference to your collection, adjust as needed
+function displayRecipe(recipeName, ingredients) {
+    const container = document.getElementById("devrecipeDetails");
+    container.innerHTML = `<h2>${recipeName}</h2><h3>Ingredients & Cooking Times (In Order)</h3>`;
 
-    // Get all recipes from Firestore
-    const querySnapshot = await recipesRef.get();
-
-    // Get the container element where we will insert the cards
-    const devRecipesContainer = document.getElementById("devRecipes");
-
-    // Loop through each recipe document from the Firestore collection
-    querySnapshot.forEach((doc) => {
-        const data = doc.data();
-
-        // Create a new card element for each recipe
-        const card = document.createElement("div");
-        card.classList.add("col");
-
-        // Set the inner HTML of the card
-        card.innerHTML = `
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">${data.name}</h5>
-                    <p class="card-text">${data.description}</p>
-                    <a href="recipe-detail.html?docID=${doc.id}" class="btn btn-primary">View Recipe</a>
-                </div>
-            </div>
+    ingredients.forEach((ing, index) => {
+        const step = document.createElement("div");
+        step.className = "step";
+        step.innerHTML = `
+          <h3>${index + 1}. ${ing.name}</h3>
+          <p><span class="highlight">Start Time:</span> ${ing.time}</p>
+          <p><span class="highlight">Cook Time:</span> ${ing.cookTime} minutes</p>
+          <p><span class="highlight">Method:</span> ${ing.method}</p>
         `;
-
-        // Append the new card to the container
-        devRecipesContainer.appendChild(card);
+        container.appendChild(step);
     });
 }
-
-// Call the function to fetch data and populate the cards
-fetchAndPopulateCards();
-
-
-
