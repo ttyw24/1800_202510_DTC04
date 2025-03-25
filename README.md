@@ -6,18 +6,18 @@ Summarize your project's purpose, problem solved, key features, user benefits, d
 
 Example:
 
-This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
+This client-side JavaScript web application provides cooking times for various ingredients. It simplifies the cooking process through an intuitive mobile-first interface, allowing users to add ingredients and receive data on cooking time.
 
-Developed for the [Course Name] course, applying User-Centred Design practices, agile project management processes, integrating a weather API, and Firebase backend services.
+Developed for the COMP 1800 course, applying User-Centred Design practices, agile project management processes, integrating Firebase backend services.
 
 ---
 
 ## Features
 
 Example:
-- Real-time weather updates for any city.
+- Provide cooking times for various cooking methods for various ingredients.
 - Responsive design for desktop and mobile.
-- Displays temperature, humidity, and weather conditions.
+- Allows user to save recipes.
 
 ---
 
@@ -27,7 +27,6 @@ Example:
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
-- **API**: OpenWeatherMap API
 
 ---
 
@@ -61,7 +60,6 @@ project-name/
 - **DerekXu** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
 - **Tiffany** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves coke.
 - **Petar** - BCIT CST Student with a passion for creating user-friendly applications. Fun fact: Loves solving Rubik's Cubes in under a minute.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
 
@@ -78,17 +76,17 @@ Example:
 ### Limitations
 
 Example:
-- Currently, the app only supports city-based weather searches.
-- Limited to basic weather parameters like temperature, humidity, and conditions.
+- Currently, the app only supports certain ingredients.
+- Limited amount of dev-provided recipes.
 - The user interface can be further enhanced for accessibility.
 
 ### Future Work
 
 Example: 
-- Add support for location-based weather detection using GPS.
-- Implement additional weather parameters like wind speed and UV index.
+- Add more ingredients to database.
+- Implement additional parameters such as size of each piece of ingredient.
 - Create a dark mode for better usability in low-light conditions.
-- Integrate user accounts for saving favorite locations.
+- Integrate user access to community recipes for bookmarking.
 
 ---
 
