@@ -2,7 +2,6 @@ function displayCardsDynamically(collection) {
     let cardTemplate = document.getElementById("recipeCardTemplate"); // Template for the card
 
     db.collection(collection)
-        .limit(3)
         .get()
         .then(allRecipes => {
             allRecipes.forEach(doc => {
