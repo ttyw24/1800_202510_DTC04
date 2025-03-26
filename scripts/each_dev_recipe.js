@@ -9,7 +9,7 @@ async function displayRecipe(recipeName, ingredients) {
 
 
     const container = document.getElementById("recipeDetails");
-    container.innerHTML = `<h2>${recipeName}</h2><h3>Ingredients & Cooking Times (In Order)</h3>`;
+    container.innerHTML = `<h2>${recipeData.name}</h2><h3>Ingredients & Cooking Times (In Order)</h3>`;
 
     // Loop through the ingredients array
     recipeData.ingredients.forEach((ing, index) => {
