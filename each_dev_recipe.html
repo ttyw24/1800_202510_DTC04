@@ -22,8 +22,34 @@
   <!-- Firebase Config -->
   <script src="scripts/firebaseAPI_TEAMDTC04.js"></script>
 
-  <!-- Navbar loader -->
-  <script src="scripts/navbar.js" defer></script>
+    <style>
+        select,
+        button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 1rem;
+        }
+    
+        .step {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 5px solid #4caf50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    
+        .step h3 {
+            margin: 0;
+        }
+    
+        .step p {
+            margin: 5px 0;
+        }
+    
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,7 +61,7 @@
 
 <main style="margin: 10px;">
     <h1>Community Recipes</h1>
-    <div id="devrecipeDetails"></div>
+    <div id="recipeDetails"></div>
 
 </main>
 
@@ -63,6 +89,8 @@
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
     <script src="./scripts/navbar.js"></script>
+    <script src="./scripts/each_dev_recipe.js"></script>
+
 </body>
 
 </html>
