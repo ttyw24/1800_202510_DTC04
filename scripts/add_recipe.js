@@ -23,7 +23,8 @@ async function loadIngredients() {
 
 function populateIngredientDropdown() {
   ingredientDropdown.innerHTML = "";
-  Object.keys(ingredientsData).forEach(name => {
+  const ingredientNames = Object.keys(ingredientsData).sort();
+  ingredientNames.forEach(name => {
     const option = document.createElement("option");
     option.value = name;
     option.textContent = name;
