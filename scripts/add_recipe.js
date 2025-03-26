@@ -110,9 +110,11 @@ document.getElementById("recipeForm").addEventListener("submit", async (e) => {
 
   const user = firebase.auth().currentUser;
   if (!user) {
-    alert("Please log in first.");
+    alert("Please log in to save your recipe.");
     return;
   }
+
+
 
   const recipeName = document.getElementById("recipeName").value.trim();
   if (!recipeName || Object.keys(selectedIngredients).length === 0) {
@@ -202,7 +204,15 @@ async function prePopulateForm() {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    loadIngredients();
-    prePopulateForm();
+    loadIngredients();          // Load ingredients normally
+    document.getElementById("saveRecipeBtn").style.display = "inline-block";
+  } else {
+    loadIngredients();          // Still allow ingredient selection
+    document.getElementById("saveRecipeBtn").style.display = "none";
+
+    const msg = document.createElement("p");
+    msg.textContent = "You're in guest mode. Log in to save your recipe.";
+    msg.style.color = "#c2847a";
+    document.getElementById("recipeForm").appendChild(msg);
   }
 });
