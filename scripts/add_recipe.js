@@ -204,7 +204,8 @@ async function prePopulateForm() {
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    loadIngredients();          // Load ingredients normally
+    loadIngredients();
+    prePopulateForm();          // Load ingredients normally
     document.getElementById("saveRecipeBtn").style.display = "inline-block";
   } else {
     loadIngredients();          // Still allow ingredient selection
